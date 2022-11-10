@@ -135,7 +135,11 @@
     <ClInclude Include="src\fae\camera2d.h" />
     <ClInclude Include="src\fae\fae.h" />
     <ClInclude Include="src\fae\rendering.h" />
-    <ClInclude Include="src\sandbox\sanbox.h" />
+    <ClInclude Include="src\sandbox\sandbox.h" />
+    <ClInclude Include="src\sandbox\sandbox_application.h" />
+    <ClInclude Include="src\sandbox\sandbox_components.h" />
+    <ClInclude Include="src\sandbox\sandbox_particle_factories.h" />
+    <ClInclude Include="src\sandbox\sandbox_systems.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp" />

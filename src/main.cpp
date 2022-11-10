@@ -11,10 +11,10 @@ using namespace fae;
 //	app.run();
 //}
 
-#include "sandbox/sanbox.h"
+#include "sandbox/sandbox.h"
 // sandbox
 int main()
 {
-	sandbox app;
+	sandbox_application app;
 	app.run();
 }
