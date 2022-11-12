@@ -30,7 +30,7 @@ namespace fae
 		if (WindowShouldClose())
 		{
 			auto& app = reg.ctx().at<application&>();
-			app.stop();
+			app.isRunning = false;
 		}
 	}
 

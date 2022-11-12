@@ -17,6 +17,8 @@
     <ClInclude Include="src\sandbox\sandbox_application.h" />
     <ClInclude Include="src\sandbox\sandbox_systems.h" />
     <ClInclude Include="src\sandbox\sandbox_particle_factories.h" />
+    <ClInclude Include="src\rope\rope.h" />
+    <ClInclude Include="src\perlin\perlin.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp" />

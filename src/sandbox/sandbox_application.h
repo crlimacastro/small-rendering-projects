@@ -8,7 +8,6 @@ struct sandbox_application : public fae::application
 {
 	// fields
 public:
-	Camera2D camera;
 	ParticleGrid* grid = nullptr;
 	ParticleWorld* world = nullptr;
 
@@ -27,11 +26,6 @@ public:
 		// set clear color to black
 		auto& renderer = reg.ctx().at<fae::Renderer>();
 		renderer.clearColor = BLACK;
-
-		// setup camera
-		/*app.camera.zoom = 1.f;
-		auto& active = reg.ctx().at<fae::ActiveCamera2D>();
-		active.camera = &app.camera;*/
 
 		// setup grid & world
 		auto gridEntity = reg.create();
@@ -120,7 +114,6 @@ public:
 	{
 		registry.ctx().emplace<WindowDescriptor>("Sandbox (Cellular Automata)");
 		plugins.emplace(fae::rendering_plugin);
-		//plugins.emplace(fae::camera2d_plugin);
 		plugins.emplace(sandbox_plugin);
 		systems.start.emplace<&sandbox_application::setup>(*this);
 		systems.update.emplace<&sandbox_application::update_particle_selection>(*this);

@@ -135,6 +135,8 @@
     <ClInclude Include="src\fae\camera2d.h" />
     <ClInclude Include="src\fae\fae.h" />
     <ClInclude Include="src\fae\rendering.h" />
+    <ClInclude Include="src\perlin\perlin.h" />
+    <ClInclude Include="src\rope\rope.h" />
     <ClInclude Include="src\sandbox\sandbox.h" />
     <ClInclude Include="src\sandbox\sandbox_application.h" />
     <ClInclude Include="src\sandbox\sandbox_components.h" />
