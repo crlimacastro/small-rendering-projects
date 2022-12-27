@@ -77,7 +77,7 @@ public:
 				}
 
 				// create particle at mouse position
-				// TODO make diamond shape around selection size
+				// TODO make diamond shape around selection N
 				auto& selection = reg.ctx().at<Selection>();
 				auto particleEntity = selection.selectedParticleFactory(reg);
 				auto& transform = reg.get<ParticleTransform>(particleEntity);
@@ -116,8 +116,8 @@ public:
 		plugins.emplace(fae::rendering_plugin);
 		plugins.emplace(sandbox_plugin);
 		systems.start.emplace<&sandbox_application::setup>(*this);
-		systems.update.emplace<&sandbox_application::update_particle_selection>(*this);
-		systems.update.emplace<&sandbox_application::create_particle_on_selection>(*this);
-		systems.update.emplace<&sandbox_application::delete_particle_on_selection>(*this);
+		systems.update_controlled_gameobject.emplace<&sandbox_application::update_particle_selection>(*this);
+		systems.update_controlled_gameobject.emplace<&sandbox_application::create_particle_on_selection>(*this);
+		systems.update_controlled_gameobject.emplace<&sandbox_application::delete_particle_on_selection>(*this);
 	}
 };

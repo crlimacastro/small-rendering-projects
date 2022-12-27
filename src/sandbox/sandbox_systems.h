@@ -14,15 +14,15 @@ void update_grids(const void*, entt::registry& reg)
 	for (auto&& [entity, grid] : reg.view<ParticleGrid>().each())
 	{
 		// resize grid particle positions if necessary
-		grid.posToParticle.resize(grid.size);
+		grid.posToParticle.resize(grid.N);
 		for (auto& col : grid.posToParticle)
 		{
 			// clear particle positions
 			col.clear();
-			col.resize(grid.size, entt::null);
+			col.resize(grid.N, entt::null);
 		}
 
-		// update positions
+		// update_controlled_gameobject positions
 		for (auto& particle : grid.particles)
 		{
 			if (particle == entt::null || !reg.valid(particle)) continue;
@@ -47,9 +47,9 @@ void draw_grids(const void*, entt::registry& reg)
 
 		if (!gridRenderer.drawDebugGridLines) continue;
 		rlPushMatrix();
-		rlTranslatef(gridRenderer.particleSize * grid.size * 0.5f, gridRenderer.particleSize * grid.size * 0.5f, 0);
+		rlTranslatef(gridRenderer.particleSize * grid.N * 0.5f, gridRenderer.particleSize * grid.N * 0.5f, 0);
 		rlRotatef(90, 1, 0, 0);
-		DrawGrid(grid.size, gridRenderer.particleSize);
+		DrawGrid(grid.N, gridRenderer.particleSize);
 		rlPopMatrix();
 	}
 }
@@ -59,7 +59,7 @@ void draw_grids(const void*, entt::registry& reg)
 void sandbox_plugin(const void*, entt::registry& reg)
 {
 	auto& app = reg.ctx().at<application&>();
-	app.systems.update.emplace<update_particles>();
-	app.systems.update.emplace<update_grids>();
-	app.systems.update.emplace<draw_grids>();
+	app.systems.update_controlled_gameobject.emplace<update_particles>();
+	app.systems.update_controlled_gameobject.emplace<update_grids>();
+	app.systems.update_controlled_gameobject.emplace<draw_grids>();
 }

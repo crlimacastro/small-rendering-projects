@@ -76,7 +76,7 @@ struct rope_simulation : public fae::application
 		auto& physics = reg.ctx().at<Physics>();
 		for (auto&& [entity, rope] : reg.view<Rope>().each())
 		{
-			for (size_t i = 1; i < rope.bodies.size(); i++)
+			for (size_t i = 1; i < rope.bodies.N(); i++)
 			{
 				b2RevoluteJointDef jointDef;
 				jointDef.Initialize(rope.bodies[i - 1], rope.bodies[i], rope.bodies[i - 1]->GetWorldCenter());
@@ -171,8 +171,8 @@ struct rope_simulation : public fae::application
 		systems.start.emplace<&rope_simulation::setup>(*this);
 		systems.start.emplace<&rope_simulation::setup_rope_grid>(*this);
 		systems.start.emplace<&rope_simulation::setup_rope_joints>(*this);
-		systems.update.emplace<&rope_simulation::update_physics>(*this);
-		systems.update.emplace<&rope_simulation::draw_ropes>(*this);
-		systems.update.emplace<&rope_simulation::destroy_ropes_with_mouse>(*this);
+		systems.update_controlled_gameobject.emplace<&rope_simulation::update_physics>(*this);
+		systems.update_controlled_gameobject.emplace<&rope_simulation::draw_ropes>(*this);
+		systems.update_controlled_gameobject.emplace<&rope_simulation::destroy_ropes_with_mouse>(*this);
 	}
 };

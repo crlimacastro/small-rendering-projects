@@ -7,3 +7,5 @@
 #include "application.h"
 #include "rendering.h"
 #include "camera2d.h"
+
+#include "math.h"

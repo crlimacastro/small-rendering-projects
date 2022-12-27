@@ -1,15 +1,12 @@
 #include "fae/fae.h"
 
-using namespace std;
-using namespace fae;
-
 // empty app
-int main()
-{
-	application app;
-	app.plugins.emplace(rendering_plugin);
-	app.run();
-}
+//int main()
+//{
+//	fae::application app;
+//	app.plugins.emplace(fae::rendering_plugin);
+//	app.run();
+//}
 
 //#include "sandbox/sandbox.h"
 //// sandbox (cellular automata)
@@ -34,3 +31,17 @@ int main()
 //	perlin app;
 //	app.run();
 //}
+
+//#include "lerp_visualizer/lerp_visualizer.h"
+//int main()
+//{
+//	lerp_visualizer app;
+//	app.run();
+//}
+
+#include "fluid/fluid.h"
+int main()
+{
+	fluid app;
+	app.run();
+}

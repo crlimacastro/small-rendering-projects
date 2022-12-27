@@ -1,6 +1,5 @@
 #pragma once
 #include "../fae/fae.h"
-#include <iostream>
 
 static const int permutation[] = {
    151,160,137,91,90,15,
@@ -128,7 +127,7 @@ struct perlin : public fae::application
 
 	void draw_noise(perlin& app, entt::registry& reg)
 	{
-		auto& window = reg.ctx().at<WindowDescriptor>();
+		auto& window = reg.ctx().at<fae::WindowDescriptor>();
 		for (size_t i = 0; i < window.width / app.pixelSize; i++)
 		{
 			for (size_t j = 0; j < window.height / app.pixelSize; j++)
@@ -144,6 +143,6 @@ struct perlin : public fae::application
 		registry.ctx().emplace<fae::WindowDescriptor>("Perlin Noise Visualizer");
 		plugins.emplace(fae::rendering_plugin);
 		systems.start.emplace<&perlin::setup>(*this);
-		systems.update.emplace<&perlin::draw_noise>(*this);
+		systems.update_controlled_gameobject.emplace<&perlin::draw_noise>(*this);
 	}
 };

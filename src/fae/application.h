@@ -11,7 +11,7 @@ namespace fae
 			entt::organizer postStart;
 
 			entt::organizer preUpdate;
-			entt::organizer update;
+			entt::organizer update_controlled_gameobject;
 			entt::organizer postUpdate;
 
 			entt::organizer preStop;
@@ -50,14 +50,14 @@ namespace fae
 			}
 			return *this;
 		}
-		application& update()
+		application& update_controlled_gameobject()
 		{
 			for (auto&& node : systems.preUpdate.graph())
 			{
 				node.prepare(registry);
 				node.callback()(NULL, registry);
 			}
-			for (auto&& node : systems.update.graph())
+			for (auto&& node : systems.update_controlled_gameobject.graph())
 			{
 				node.prepare(registry);
 				node.callback()(NULL, registry);
@@ -95,7 +95,7 @@ namespace fae
 			start();
 			while (isRunning)
 			{
-				update();
+				update_controlled_gameobject();
 			}
 			stop();
 			return *this;

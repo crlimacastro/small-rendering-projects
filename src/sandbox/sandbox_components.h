@@ -35,10 +35,10 @@ struct ParticleWorld
 
 struct ParticleGrid
 {
-	size_t size = 256;
+	size_t N = 256;
 	std::unordered_set<entt::entity> particles;
 
-	bool InBounds(size_t x, size_t y) const { return x < size&& y < size; }
+	bool InBounds(size_t x, size_t y) const { return x < N&& y < N; }
 
 	entt::entity GetParticleAt(size_t x, size_t y) const {
 		if (!InBounds(x, y)) return entt::null;
