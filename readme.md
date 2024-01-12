@@ -1,5 +1,5 @@
-# studies-in-rendering
+# small-rendering-projects
 
-A few fun tiny side projects I had never done but always had in my eye.
+A few fun tiny side projects.
 
 Using raylib for rendering & entt for ecs structure.
